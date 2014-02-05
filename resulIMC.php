@@ -1,31 +1,30 @@
 <?php
 require_once "resulIMC2.php";
 
-$error = "";
-
-$masa = (is_int($_REQUEST['masa'])) ? $_REQUEST['masa'] : $error .= "Introduzca una masa correcta";
-$altura = (is_int($_REQUEST['altura'])) ? $_REQUEST['altura'] : $error .= "Altura incorrecta";
+$masa = $_REQUEST['masa'];
+$altura = $_REQUEST['altura'];
+$errores = array();
 
 //Validación
-if ($masa >= 10 && $masa <= 700){
-    ;
-} else {
-    $error .= "Peso incorrecto";
+if (!valPeso($masa)){
+    $errores[] = MSG_ERROR_PESO;
 }
 
-if ($altura >= 30 && $altura <= 250){
-    $altura = $altura/100;
-} else {
-    $error = "Altura incorrecta";
+if (!valAlt($altura)) {
+    $errores[] = MSG_ERROR_ALTURA;
 }
 
-//Funciones
-if (is_null($error){
-    calcularIMC($masa, $altura);
+if (count($errores)>0){
+    echo 'Errores: <br />';
+    foreach($errores as $error){
+        echo $error.'<br />';
+    }
 } else {
-    print $error;
+//Cálculo y clasificación
+    $imc = calcularIMC($masa, $altura);
+    $clasificacion = clasificarIMC($imc);
+    echo "Su imc es de: ".$imc;
+    echo "Su peso se encuentra en el rango de: ".$clasificacion;
 }
 
-//Resultado
-echo "Su peso se encuentra en el rango de: ".$peso;
 ?>
