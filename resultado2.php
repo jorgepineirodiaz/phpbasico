@@ -1,55 +1,51 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
-        <title></title>
+        <meta name="viewport" content="width=device-width">
     </head>
     <body>
+        <div>TODO write content</div>
         <?php
             //Entrada datos
             $nombre = "";
-            if (isset($_REQUEST['nombre'])){
+            if (isset($_REQUEST['nombre'])) {
                 $nombre = $_REQUEST['nombre'];
-            }
-            
+            }    
             $edad = $_REQUEST['edad'];
-            
-            //Validación
+            //Validar datos
             $error = false;
             $mensaje_error = "ERROR: ";
-            
-            if ($nombre == ""){
+            //Validar nombre
+            if ($nombre == "") {
                 $error = true;
-                $mensaje_error .= "Introduzca un nombre<br />";
-            }
-            
-            if (!is_numeric($edad)){
+                $mensaje_error .= "Nombre obligatorio<br>";
+            }            
+            //Validar edad
+            if (!is_numeric($edad)) {
                 $error = true;
-                $mensaje_error .= "Edad debe ser un número<br />";
+                $mensaje_error .= "Edad debe ser un número<br>";
             } else {
-                if ($edad <= 0 || $edad > 100){
+                //Es un número--> Verificar (0,100]
+                if ($edad <= 0 || $edad > 100) {
                     $error = true;
-                    $mensaje_error .= "Edad poco realista. Debe estar en el rango (0,100]<br />";
+                    $mensaje_error .= "Edad debe estar (0, 100] <br>";
                 }
             }
-                
-            //Salida datos 
-            if (!$error){
-                if ($edad >= 18) {
-                    echo $nombre.", eres mayor de edad";
-                } else {
-                    echo $nombre.", eres menor de edad";
-                } 
+            //Cálculo y Salida
+            if (!$error) {
+                // Si no hay error
+                if ($edad>=18) {
+                    echo $nombre." es Mayor de Edad";
+                } else {    
+                    echo $nombre." es Menor de edad";
+                }
             } else {
+                // Si hay error
                 echo $mensaje_error;
-                echo "<br /><a href='javascript:histoy.go(-1);'>Volver al formulario</a>";
+                echo "<a href='javascript:history.go(-1);'>Volver al formulario</a>";
             }
-            
         ?>
     </body>
 </html>
+
