@@ -8,20 +8,19 @@ require_once 'func.php';
  */
 
     $db = conectaBd();
-    $nombre_producto = $_REQUEST['NombreProducto'];
-    $precio_unidad = $_REQUEST['PrecioUnidad'];
-    $unidades_existencia =  $_REQUEST['UnidadesExistencia'];
+    $login = $_REQUEST['login'];
+    $password = $_REQUEST['password'];
+    $nombre = $_REQUEST['nombre'];
     
-    $consulta = "INSERT INTO producto 
-    (NombreProducto, PrecioUnidad, UnidadesExistencia)
-    VALUES (:nombre_producto, :precio_unidad, :unidades_existencia)";
+    $consulta = "INSERT INTO usuario 
+    (login, password, nombre)
+    VALUES (:login, :password, :nombre)";
     $resultado = $db->prepare($consulta);
-    if ($resultado->execute(array(":nombre_producto" => $nombre_producto, ":precio_unidad" => $precio_unidad,
-        ":unidades_existencia" => $unidades_existencia))) {
-        $url = "list1.php";
+    if ($resultado->execute(array(":login" => $login, ":password" => $password, ":nombre" => $nombre))) {
+        $url = "acceso.php";
         header('Location:'.$url);
     } else {
-        $url = "error.php?msg_error=Error_Grabar_Nuevo_Software";
+        $url = "error.php?msg_error=Error_Grabar_Nuevo_Usuario";
         header('Location:'.$url);
     }
 

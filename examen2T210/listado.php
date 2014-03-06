@@ -44,11 +44,11 @@ and open the template in the editor.
                     echo "<td>".$registro['NombreProducto']."</td>";
                     echo "<td align=right>".formatoMoneda($registro['PrecioUnidad'])."</td>";
                     echo "<td align=right>".$registro['UnidadesExistencia']."</td>";        
-                    echo "<td><a href='#'>Borrar</a></td>";
+                    echo "<td><a href=\"cborrar.php?id=".$registro['IdProducto']."\">Borrar</a></td>";
                 }
                 echo "</table>";
             }
-            
+                      
             $bd = null;
         ?>   
     </body>

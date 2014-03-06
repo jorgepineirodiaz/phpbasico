@@ -1,10 +1,8 @@
 <?php session_start(); 
 require_once 'bbdd.php'; 
 
-$login = (isset($_REQUEST['login']))?
-            $_REQUEST['login']:"";
-$password = (isset($_REQUEST['password']))?
-            $_REQUEST['password']:"";
+$login = (isset($_REQUEST['login']))?$_REQUEST['login']:"";
+$password = (isset($_REQUEST['password']))?$_REQUEST['password']:"";
 
 if ($login == "" || $password =="") {
     $url = "acceso.php";

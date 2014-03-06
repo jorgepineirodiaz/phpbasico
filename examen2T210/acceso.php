@@ -22,5 +22,6 @@ and open the template in the editor.
             <div>Password: <input type="password" name="password" /></div>
             <div><input type="submit" value="Entrar" /></div>
         </form>
+    <center><h3><a href="falta1.php">Registrar nuevo usuario</a></h3></center>
     </body>
 </html>

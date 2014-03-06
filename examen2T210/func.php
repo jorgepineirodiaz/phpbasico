@@ -54,7 +54,11 @@ function validarNombreProducto($valor) {
 function validarPrecio($valor) {
     // FILTER_VALIDATE_FLOAT
     // Valor >=0
-    return TRUE;
+    if (filter_var($valor, FILTER_VALIDATE_FLOAT) == TRUE && $valor >= 0) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 
@@ -67,6 +71,10 @@ function validarPrecio($valor) {
 function validarExistencia($valor) {
     // FILTER_VALIDATE_INT
     // Valor >= 0
-    return TRUE;
+    if (filter_var($valor, FILTER_VALIDATE_INT) == TRUE && $valor >= 0) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 

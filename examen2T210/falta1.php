@@ -13,16 +13,16 @@ and open the template in the editor.
     </head>
     <body>
         <div class="formulario">&nbsp;</div>
-        <h1>Alta Producto 1 (sin val)</h1>
+        <h1>Alta Usuario</h1>
          <ul>           
-        <li><a href="listado.php">Listado</a></li>
+        <li><a href="acceso.php">Acceso</a></li>
         </ul>
         <form action="galta1.php" method="GET">
-            <div>Nombre Producto: <input type="text" name="NombreProducto"/>
+            <div>Login: <input type="text" name="login"/>
             </div>
-            <div>Precio Unidad <input type="text" name="PrecioUnidad"/></div>
+            <div>Password: <input type="password" name="password"/></div>
             </div>
-             <div>Existencias <input type="text" name="UnidadesExistencia"/></div>
+             <div>Nombre: <input type="text" name="nombre"/></div>
             </div>
             <input type="submit" value="Grabar" />
         </form>
